@@ -108,7 +108,7 @@ export const Register = ({ navigation }) => {
       await AsyncStorage.setItem(storageKey.PendingUser, email.toLowerCase());
       navigation.navigate("confirmEmail");
     } else {
-      toast.show("Problem registering.");
+      toast.show(`Problem registering ${error}`);
     }
     setRegistering(false);
   };
