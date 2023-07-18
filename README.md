@@ -16,6 +16,14 @@ the design system (e.g. mapping.json). Shout out to Tyrone and Paul from codesou
 
 ## Usage
 
+### Environment
+
+Install the latest:
+
+- Node LTS
+- Xcode
+- Android Studio
+
 ### Amplify
 
 Amplify is a CLI tool from AWS that helps provision and configure services needed for app development quickly and easily.
@@ -67,13 +75,53 @@ your own.
   - Contains at least 1 lowercase letter
 - Attributes required for signing in:
   - Email
-- Specify user attributes to read and write:
-  - Email
   - Family Name
   - Given Name
   - Phone Number
   - Profile
+- Specify user attributes to read and write; add other capabilities etc etc: No and none
+
+Now Amplify is configured locally. Push it to set up the new resources in the cloud:
+
+```
+amplify push
+```
+
+One last thing. The CLI doesn't allow us to create custom attributes, so let's create that using the console.
+
+In the AWS console, go to Cognito and the region you chose (e.g. US East N.Virginia us-east-1). In the user pool section,
+click 'Sign-up experience', click 'Add custom attributes' and enter the attribute `company` and save.
 
 ### Running the app
 
-To build and run the app, refer to the [Expo docs](https://docs.expo.dev/build/setup/).
+Now that the back-end is configured and connected, let's run the app.
+
+For iOS, run
+
+```
+npm run ios:dev
+```
+
+For Android, run
+
+```
+npm run android:dev
+```
+
+These will open emulators in the respective platform with the app running and responding to local file changes.
+
+If Expo Go is more your thing, go ahead and install that.
+
+If you're ready for a production build, go through the [Expo docs](https://docs.expo.dev/build/setup/).
+
+### Next steps
+
+Continue to build out the back-end with Amplify by adding other services, such as an REST or GraphQL API
+with:
+
+- `amplify add api`
+- `amplify add storage`
+- `amplify add function`
+
+I prefer to manage my AWS resources with [Serverless](https://serverless.com/), and have a follow-up tutorial
+about how to tack that on in the pipeline.
